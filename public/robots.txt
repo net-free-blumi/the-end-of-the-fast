@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://the-end-of-the-fast.vercel.app/sitemap.xml

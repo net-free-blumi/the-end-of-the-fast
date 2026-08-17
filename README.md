@@ -1,20 +1,45 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# מתי יוצא הצום? (The End of The Fast) ⏳
 
-# Run and deploy your AI Studio app
+אתר מתקדם, מדויק ומהיר לחישוב זמני כניסה ויציאה של כל צומות ישראל, עם ספירה לאחור בזמן אמת לפי עיר וזמני רבנו תם.
 
-This contains everything you need to run your app locally.
+## 🚀 הרצה מקומית (Local Development)
 
-View your app in AI Studio: https://ai.studio/apps/cd0d0d6d-9f6d-4582-bd57-02fb619afd9c
+כדי להריץ את הפרויקט במחשב שלך:
 
-## Run Locally
+1. **התקנת תלויות**:
+   ```bash
+   npm install
+   ```
 
-**Prerequisites:**  Node.js
+2. **הרצת שרת הפיתוח של Vite**:
+   ```bash
+   npm run dev
+   ```
+   האתר ייפתח בכתובת: `http://localhost:3000` (או פורט ש-Vite יציג בטרמינל).
 
+> 💡 **הערה חשובה לגבי השגיאה `Failed to load module script MIME type`**:
+> שגיאה זו מתרחשת כשמנסים לפתוח ישירות את קובץ ה-HTML בדפדפן (לחיצה כפולה על `index.html` או הגשה דרך שרת קבצים פשוט ללא תמיכת TypeScript/Vite). כדי שהקוד ירוץ במחשב, **חובה להריץ `npm run dev`**.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## 🌐 פריסה לאינטרנט בחינם (Deployment)
+
+האתר הוא Client-side SPA טהור וניתן להעלות אותו בחינם תוך שניות:
+
+### פריסה ל-Vercel (מומלץ ביותר):
+1. היכנס ל-[vercel.com](https://vercel.com) והתחבר עם GitHub.
+2. לחץ **Add New Project** ובחר ב-`the-end-of-the-fast`.
+3. לחץ **Deploy** (Vercel יזהה אוטומטית את Vite ויבנה את האתר).
+
+### פריסה ל-Netlify:
+1. היכנס ל-[netlify.com](https://netlify.com) והתחבר עם GitHub.
+2. בחר את הריפוזיטורי ולחץ **Deploy**.
+
+---
+
+## 🔍 מוכנות מלאה למנועי חיפוש (Google SEO)
+הקוד כולל:
+- תגיות Meta מלאות בעברית (Title, Description, Keywords).
+- Open Graph ו-Twitter Cards לשיתוף מעוצב בוואטסאפ ורשתות.
+- מבנה נתונים של גוגל (Schema.org JSON-LD).
+- קבצי `robots.txt` ו-`sitemap.xml` בתיקיית `public/`.
