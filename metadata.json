@@ -1,0 +1,6 @@
+{
+  "name": "ספירה לאחור לצום",
+  "description": "מתי נכנס ויוצא הצום? ספירה לאחור מדויקת לכל הצומות לפי עיר, זמני כניסה, יציאה ורבנו תם.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
