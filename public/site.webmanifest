@@ -1,0 +1,17 @@
+{
+  "name": "מתי יוצא הצום",
+  "short_name": "מתי יוצא הצום",
+  "description": "ספירה לאחור וזמני כניסה ויציאה של כל צומות ישראל לפי עיר",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

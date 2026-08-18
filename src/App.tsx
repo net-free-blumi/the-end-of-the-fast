@@ -208,32 +208,36 @@ export default function App() {
 
   return (
     <div
-      className="min-h-[100dvh] w-full flex flex-col justify-between items-center p-3 sm:p-6 md:p-8 pb-14 sm:pb-16 relative bg-slate-950 text-slate-100 overflow-x-hidden select-none"
+      className="min-h-[100dvh] w-full flex flex-col justify-between items-center p-2 sm:p-4 md:p-6 pb-11 sm:pb-14 relative text-slate-100 overflow-x-hidden select-none bg-slate-950"
       style={{
-        backgroundImage: `radial-gradient(ellipse at 50% 15%, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.98) 100%)`
+        backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.88)), url('/black-logo.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat'
       }}
       dir="rtl"
     >
       {/* Decorative ambient lights */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-teal-500/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-1/3 w-[450px] h-[250px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[250px] bg-teal-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 left-1/3 w-[350px] h-[180px] bg-indigo-500/10 blur-[90px] rounded-full pointer-events-none" />
 
       {/* Center Main Stage / Hero Card */}
-      <main className="relative z-10 w-full max-w-3xl my-auto flex flex-col items-center justify-center pt-2 sm:pt-4">
-        <div className="w-full bg-white rounded-3xl sm:rounded-[36px] shadow-2xl shadow-black/60 p-5 sm:p-10 md:p-12 text-center text-slate-800 border border-white/40 backdrop-blur-xl transition-all">
+      <main className="relative z-10 w-full max-w-2xl lg:max-w-3xl my-auto flex flex-col items-center justify-center py-2 sm:py-3">
+        <div className="w-full bg-white/95 rounded-2xl sm:rounded-[32px] shadow-2xl shadow-black/70 p-4 sm:p-7 md:p-9 text-center text-slate-800 border border-white/50 backdrop-blur-xl transition-all">
           {/* Fast Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-indigo-950 tracking-tight mb-2 font-['Varela_Round']">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-indigo-950 tracking-tight mb-1 font-['Varela_Round']">
             {isLoading ? 'טוען זמני צום...' : phase === 'after' ? `${fastTitle} הסתיים` : fastTitle}
           </h1>
 
           {/* Subtitle / City & Date */}
-          <p className="text-sm sm:text-lg text-slate-500 font-medium mb-3">
+          <p className="text-xs sm:text-base text-slate-500 font-medium mb-2">
             {isLoading ? 'רגע אחד...' : `${cityName} · ${fastHebrewDate || fastGregDate}`}
           </p>
 
           {/* Status Subtitle banner */}
           {subtitle && (
-            <div className="inline-block text-base sm:text-2xl font-black text-teal-700 mb-3 tracking-wide">
+            <div className="inline-block text-sm sm:text-xl font-black text-teal-700 mb-2 tracking-wide">
               {subtitle}
             </div>
           )}
@@ -241,9 +245,9 @@ export default function App() {
           {/* Alert / Celebration Banner */}
           {bannerText && (
             <div
-              className={`w-full p-3 sm:p-4 rounded-2xl font-bold text-base sm:text-lg mb-4 sm:mb-6 transition-all ${
+              className={`w-full p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base mb-3 transition-all ${
                 bannerType === 'celebration'
-                  ? 'bg-amber-100/90 text-amber-950 border-2 border-amber-300 shadow-sm'
+                  ? 'bg-amber-100/95 text-amber-950 border-2 border-amber-300 shadow-sm'
                   : bannerType === 'during'
                   ? 'bg-teal-50 text-teal-900 border-2 border-teal-300 shadow-sm'
                   : 'bg-indigo-50 text-indigo-950 border-2 border-indigo-200 shadow-sm'
@@ -254,7 +258,7 @@ export default function App() {
           )}
 
           {/* Date Tag */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-base font-semibold text-slate-600 mb-4 bg-slate-100/90 py-1.5 px-4 rounded-full w-fit mx-auto border border-slate-200 shadow-sm">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 mb-3 bg-slate-100/90 py-1 px-3.5 rounded-full w-fit mx-auto border border-slate-200 shadow-sm">
             <span className="font-bold text-indigo-950">{fastHebrewDate || '—'}</span>
             <span className="text-slate-400">|</span>
             <span className="font-mono text-slate-700">
@@ -263,75 +267,75 @@ export default function App() {
           </div>
 
           {/* Center Custom City Selector */}
-          <div className="mb-4 flex flex-col items-center justify-center">
+          <div className="mb-3 flex flex-col items-center justify-center">
             <CitySelector selectedCity={selectedCity} onSelectCity={handleCityChange} />
           </div>
 
           {/* Main State Handler */}
           {isLoading ? (
-            <div className="flex flex-col items-center justify-center py-12 gap-3">
-              <Loader2 className="w-10 h-10 animate-spin text-teal-600" />
-              <span className="text-slate-600 font-semibold text-base">מחשב זמנים הלכתיים מדויקים...</span>
+            <div className="flex flex-col items-center justify-center py-8 gap-2.5">
+              <Loader2 className="w-8 h-8 animate-spin text-teal-600" />
+              <span className="text-slate-600 font-semibold text-sm">מחשב זמנים הלכתיים מדויקים...</span>
             </div>
           ) : errorMsg ? (
-            <div className="py-8 text-red-600 font-bold text-lg">{errorMsg}</div>
+            <div className="py-6 text-red-600 font-bold text-base">{errorMsg}</div>
           ) : (
             <>
               {/* Massive Modern Countdown Display */}
               {phase !== 'after' && (
                 <div
-                  className="flex items-center justify-center gap-1.5 sm:gap-3 my-3 sm:my-6 text-indigo-950 select-none flex-wrap"
+                  className="flex items-center justify-center gap-1.5 sm:gap-2.5 my-2 sm:my-4 text-indigo-950 select-none flex-wrap"
                   dir="ltr"
                 >
                   {/* Days (if > 0) */}
                   {timeLeft.totalDays > 0 && (
                     <>
-                      <div className="flex flex-col items-center bg-indigo-50/60 hover:bg-indigo-50 transition p-2 sm:p-4 rounded-2xl sm:rounded-3xl border border-indigo-100/80 min-w-[64px] sm:min-w-[100px] md:min-w-[120px]">
-                        <span className="text-3xl sm:text-6xl md:text-7xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
+                      <div className="flex flex-col items-center bg-indigo-50/70 hover:bg-indigo-50 transition p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border border-indigo-100/80 min-w-[56px] sm:min-w-[80px] md:min-w-[96px]">
+                        <span className="text-2xl sm:text-4xl md:text-5xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
                           {timeLeft.days}
                         </span>
-                        <span className="text-[11px] sm:text-sm font-bold text-slate-500 mt-1 uppercase">ימים</span>
+                        <span className="text-[10px] sm:text-xs font-bold text-slate-500 mt-0.5 uppercase">ימים</span>
                       </div>
-                      <span className="text-xl sm:text-4xl md:text-5xl text-teal-600 -translate-y-2 sm:-translate-y-3 font-bold select-none">:</span>
+                      <span className="text-lg sm:text-3xl md:text-4xl text-teal-600 -translate-y-1 sm:-translate-y-2 font-bold select-none">:</span>
                     </>
                   )}
 
                   {/* Hours */}
-                  <div className="flex flex-col items-center bg-indigo-50/60 hover:bg-indigo-50 transition p-2 sm:p-4 rounded-2xl sm:rounded-3xl border border-indigo-100/80 min-w-[64px] sm:min-w-[100px] md:min-w-[120px]">
-                    <span className="text-3xl sm:text-6xl md:text-7xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
+                  <div className="flex flex-col items-center bg-indigo-50/70 hover:bg-indigo-50 transition p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border border-indigo-100/80 min-w-[56px] sm:min-w-[80px] md:min-w-[96px]">
+                    <span className="text-2xl sm:text-4xl md:text-5xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
                       {timeLeft.hours}
                     </span>
-                    <span className="text-[11px] sm:text-sm font-bold text-slate-500 mt-1 uppercase">שעות</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-slate-500 mt-0.5 uppercase">שעות</span>
                   </div>
 
-                  <span className="text-xl sm:text-4xl md:text-5xl text-teal-600 -translate-y-2 sm:-translate-y-3 font-bold select-none">:</span>
+                  <span className="text-lg sm:text-3xl md:text-4xl text-teal-600 -translate-y-1 sm:-translate-y-2 font-bold select-none">:</span>
 
                   {/* Minutes */}
-                  <div className="flex flex-col items-center bg-indigo-50/60 hover:bg-indigo-50 transition p-2 sm:p-4 rounded-2xl sm:rounded-3xl border border-indigo-100/80 min-w-[64px] sm:min-w-[100px] md:min-w-[120px]">
-                    <span className="text-3xl sm:text-6xl md:text-7xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
+                  <div className="flex flex-col items-center bg-indigo-50/70 hover:bg-indigo-50 transition p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border border-indigo-100/80 min-w-[56px] sm:min-w-[80px] md:min-w-[96px]">
+                    <span className="text-2xl sm:text-4xl md:text-5xl tracking-tight font-black bg-gradient-to-b from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
                       {timeLeft.minutes}
                     </span>
-                    <span className="text-[11px] sm:text-sm font-bold text-slate-500 mt-1 uppercase">דקות</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-slate-500 mt-0.5 uppercase">דקות</span>
                   </div>
 
-                  <span className="text-xl sm:text-4xl md:text-5xl text-teal-600 -translate-y-2 sm:-translate-y-3 font-bold select-none">:</span>
+                  <span className="text-lg sm:text-3xl md:text-4xl text-teal-600 -translate-y-1 sm:-translate-y-2 font-bold select-none">:</span>
 
                   {/* Seconds */}
-                  <div className="flex flex-col items-center bg-indigo-50/60 hover:bg-indigo-50 transition p-2 sm:p-4 rounded-2xl sm:rounded-3xl border border-indigo-100/80 min-w-[64px] sm:min-w-[100px] md:min-w-[120px]">
-                    <span className="text-3xl sm:text-6xl md:text-7xl tracking-tight font-black text-teal-600">
+                  <div className="flex flex-col items-center bg-indigo-50/70 hover:bg-indigo-50 transition p-1.5 sm:p-3 rounded-xl sm:rounded-2xl border border-indigo-100/80 min-w-[56px] sm:min-w-[80px] md:min-w-[96px]">
+                    <span className="text-2xl sm:text-4xl md:text-5xl tracking-tight font-black text-teal-600">
                       {timeLeft.seconds}
                     </span>
-                    <span className="text-[11px] sm:text-sm font-bold text-slate-500 mt-1 uppercase">שניות</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-slate-500 mt-0.5 uppercase">שניות</span>
                   </div>
                 </div>
               )}
 
               {/* Structured Halachic Times: 3 distinct clear cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 bg-gradient-to-br from-indigo-50/90 via-white/80 to-teal-50/60 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-indigo-100/90 my-4 sm:my-5 shadow-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 bg-gradient-to-br from-indigo-50/90 via-white/80 to-teal-50/60 p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-indigo-100/90 my-2.5 sm:my-3.5 shadow-sm">
                 {/* 1. Fast Start */}
-                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-white/70 rounded-xl border border-slate-200/50">
+                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-white/80 rounded-xl border border-slate-200/50">
                   <span className="text-[11px] sm:text-xs font-bold text-slate-500 mb-0.5">כניסת הצום</span>
-                  <strong className="text-base sm:text-xl text-indigo-950 font-black">
+                  <strong className="text-base sm:text-lg md:text-xl text-indigo-950 font-black">
                     {formatTime(currentFast?.start, tzid)}
                   </strong>
                   <span className="text-[10px] font-medium text-slate-500 mt-0.5">
@@ -340,9 +344,9 @@ export default function App() {
                 </div>
 
                 {/* 2. Fast End (Default) */}
-                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-teal-50/80 rounded-xl border-2 border-teal-400/80 shadow-sm">
+                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-teal-50/90 rounded-xl border-2 border-teal-400/80 shadow-sm">
                   <span className="text-[11px] sm:text-xs font-black text-teal-950 mb-0.5">יציאת הצום (ברירת מחדל)</span>
-                  <strong className="text-xl sm:text-2xl text-teal-700 font-black">
+                  <strong className="text-lg sm:text-xl md:text-2xl text-teal-700 font-black">
                     {formatTime(currentFast?.end, tzid)}
                   </strong>
                   <span className="text-[10px] font-bold text-teal-700 mt-0.5">
@@ -351,9 +355,9 @@ export default function App() {
                 </div>
 
                 {/* 3. Rabbeinu Tam (72 min) */}
-                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-white/70 rounded-xl border border-slate-200/50">
+                <div className="p-2 sm:p-2.5 flex flex-col items-center justify-center bg-white/80 rounded-xl border border-slate-200/50">
                   <span className="text-[11px] sm:text-xs font-bold text-slate-600 mb-0.5">רבנו תם</span>
-                  <strong className="text-base sm:text-xl text-indigo-950 font-black">
+                  <strong className="text-base sm:text-lg md:text-xl text-indigo-950 font-black">
                     {formatTime(rt72f, tzid)}
                   </strong>
                   <span className="text-[10px] font-medium text-slate-500 mt-0.5">
@@ -363,24 +367,24 @@ export default function App() {
               </div>
 
               {/* Collapsible Halachic & Astronomical Layer Details */}
-              <div className="mb-4 text-right">
+              <div className="mb-3 text-right">
                 <button
                   type="button"
                   onClick={() => setShowHalachicDetails(!showHalachicDetails)}
-                  className="w-full flex items-center justify-between px-4 py-2 bg-slate-50 hover:bg-indigo-50/60 rounded-xl text-xs font-bold text-indigo-950 border border-indigo-100/80 transition cursor-pointer"
+                  className="w-full flex items-center justify-between px-3.5 py-1.5 sm:py-2 bg-slate-50 hover:bg-indigo-50/60 rounded-xl text-xs font-bold text-indigo-950 border border-indigo-100/80 transition cursor-pointer"
                 >
                   <div className="flex items-center gap-2">
-                    <Info className="w-4 h-4 text-teal-600" />
+                    <Info className="w-3.5 h-3.5 text-teal-600" />
                     <span>פירוט שיטות החישוב והשכבה האסטרונומית לצום זה</span>
                   </div>
-                  {showHalachicDetails ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  {showHalachicDetails ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                 </button>
 
                 {showHalachicDetails && (
-                  <div className="mt-2 p-3 sm:p-4 bg-slate-50 rounded-2xl border border-indigo-100 text-xs text-slate-700 grid grid-cols-1 sm:grid-cols-3 gap-3 animate-in fade-in duration-150">
+                  <div className="mt-2 p-3 bg-slate-50 rounded-xl border border-indigo-100 text-xs text-slate-700 grid grid-cols-1 sm:grid-cols-3 gap-2.5 animate-in fade-in duration-150">
                     <div>
                       <div className="font-bold text-indigo-950 mb-1">שכבה אסטרונומית (מתחת לאופק):</div>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-slate-600 leading-relaxed text-[11px]">
                         • שקיעה מישורית: <strong>{formatTime(details?.sunsetGeometric, tzid)}</strong><br />
                         • שקיעת השמש 6.45° (צאת צום 2net): <strong>{formatTime(details?.tzeitFast2net6Pt45Deg, tzid)}</strong><br />
                         • שקיעת השמש 8.5° (מוצאי יו״כ 2net): <strong>{formatTime(details?.tzeitYomKippur2net8Pt5Deg, tzid)}</strong><br />
@@ -390,7 +394,7 @@ export default function App() {
 
                     <div>
                       <div className="font-bold text-indigo-950 mb-1">כניסת הצום:</div>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-slate-600 leading-relaxed text-[11px]">
                         • הגדרה: <strong>{currentFast?.startLabel}</strong><br />
                         • נוסחה: <strong>{currentFast?.startMethodDesc}</strong><br />
                         • 16.1° (זמניות): <strong>{formatTime(details?.alos16Point1Deg, tzid)}</strong><br />
@@ -400,7 +404,7 @@ export default function App() {
 
                     <div>
                       <div className="font-bold text-indigo-950 mb-1">יציאת הצום וחומרות:</div>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-slate-600 leading-relaxed text-[11px]">
                         • עיקר הדין (ברירת מחדל): <strong>{formatTime(currentFast?.end, tzid)}</strong><br />
                         • ר״ת 72ד׳ קבועות: <strong>{formatTime(rt72f, tzid)}</strong><br />
                         • ר״ת 72ד׳ זמניות: <strong>{formatTime(rt72z, tzid)}</strong>
@@ -411,19 +415,19 @@ export default function App() {
               </div>
 
               {/* Action Buttons: Full calendar & Shares */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 pt-0.5">
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="w-full sm:w-auto px-7 py-3 bg-gradient-to-r from-teal-600 to-indigo-900 hover:from-teal-500 hover:to-indigo-800 text-white font-bold text-sm sm:text-base rounded-2xl shadow-lg shadow-teal-950/20 hover:scale-[1.02] active:scale-[0.98] transition flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-teal-600 to-indigo-900 hover:from-teal-500 hover:to-indigo-800 text-white font-bold text-xs sm:text-sm rounded-xl sm:rounded-2xl shadow-lg shadow-teal-950/20 hover:scale-[1.02] active:scale-[0.98] transition flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Calendar className="w-5 h-5" />
+                  <Calendar className="w-4 h-4" />
                   כל זמני הצומות
                 </button>
 
                 <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={handleShareWhatsApp}
-                    className="flex-1 sm:flex-none px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold rounded-2xl shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                    className="flex-1 sm:flex-none px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold rounded-xl sm:rounded-2xl shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                     title="שתף בוואטסאפ"
                   >
                     <span>📱</span>
@@ -431,7 +435,7 @@ export default function App() {
                   </button>
                   <button
                     onClick={handleShareFacebook}
-                    className="flex-1 sm:flex-none px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-2xl shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                    className="flex-1 sm:flex-none px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl sm:rounded-2xl shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                     title="שתף בפייסבוק"
                   >
                     <span>📘</span>
